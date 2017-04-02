@@ -94,23 +94,58 @@ if (!util.isUndefined(watsonServices)) {
   toneAnalyzer = watson.tone_analyzer(watsonOptions);
 }
 
-const processTone = (text) => new Promise(resolve => {
-  console.log(`processTone: ${text}`);
-  toneAnalyzer.tone({ text }, (err, data) => {
-    if (err) {
-      console.log('err :', err);
-      resolve([]);
-      return;
-    }
+// /////// GET WATSON LANGUAGE TRANSLATOR CREDENTIALS///////////
+let languageTranslator;
 
-    const tones = data.document_tone.tone_categories[0].tones;
-    console.log('Watson tone result :', tones);
-    const tonesFiltered = tones.filter((tone) => {
-      return tone.tone_id !== 'disgust' && tone.tone_id !== 'fear';
-    });
-    resolve(tonesFiltered);
-  });
-});
+const watsonServicesLT = services.language_translator;
+
+if (!util.isUndefined(watsonServicesLT)) {
+  // We now take the first bound service and extract it's credentials object
+  const watsonCredentialsLT = watsonServicesLT[0].credentials;
+
+  const watsonOptionsLT = {
+    url: 'https://gateway.watsonplatform.net/language-translator/api',
+    username: watsonCredentialsLT.username,
+    password: watsonCredentialsLT.password,
+    version: 'v2',
+  };
+  // Create the service wrapper
+  languageTranslator = watson.language_translator(watsonOptionsLT);
+}
+
+const processTone = (text) => new Promise(resolve => {
+
+  let translatedText = ' ';
+
+  console.log(`processTone: ${text}`);
+
+  //by Buzeto - inclui a tradução da conversa com o bot para o inglês para usar o toneAnalyzer
+  languageTranslator.translate({ text: text, source: 'pt', target: 'en' }, (err, translation) => {
+      if (err) {
+        console.log('err :', err)
+        resolve([]);
+        return;
+        }
+
+        translatedText = translation.translations[0].translation;
+
+        toneAnalyzer.tone({ text: translatedText }, (err, data) => {
+            if (err) {
+              console.log('err :', err);
+              resolve([]);
+              return;
+            }
+
+            const tones = data.document_tone.tone_categories[0].tones;
+            console.log('Watson tone result :', tones);
+            const tonesFiltered = tones.filter((tone) => {
+            return tone.tone_id !== 'disgust' && tone.tone_id !== 'fear';
+            });
+          resolve(tonesFiltered);
+          });
+        });
+      });
+
 
 const getAllLogs = function *() {
   const list = new Promise((resolve, reject) => {
@@ -221,13 +256,15 @@ const tone = function *(conversationID) {
     const toneHistory = [];
     let toneSummary = [];
     let text = '';
+    let translatedText = '';
     // logs is an array of log. each log has inputText
     // process each inputText
     let i = 1;
     for (const log of logs) {
       // TODO: make this run in parallel, not synchornous.
       text = `${text}. ${log.inputText}`;
-      const logTone = yield processTone(text);
+
+      const logTone = yield processTone( text );
       const logToneFormatted = { name: i };
       // We want logToneFormatted to look like { name: '1', joy: 0.27, frustration: 0.80, sadness: 0.70 },
       for (const tone of logTone) {
