@@ -6,3 +6,4 @@ applications:
   services:
   - insurance-bot-db
   - insurance-tone_analyzer
+  - insurance-bot-language-translator
