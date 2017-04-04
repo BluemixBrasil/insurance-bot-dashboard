@@ -32,7 +32,7 @@ const styles = {
 const formatName = ({ fname, lname }) => (fname ? `${fname} ${lname}` : 'John Doe');
 const formatDate = (date) => (
   <span style={styles.secondaryText}>
-    {moment(date).format('MMM Do, h:mm a')}
+    {moment(date).format('DD MMM, h:mm a')}
   </span>
 );
 
