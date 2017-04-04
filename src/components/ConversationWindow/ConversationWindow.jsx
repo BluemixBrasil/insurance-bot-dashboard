@@ -13,7 +13,7 @@ const formatName = ({ fname, lname }) => (fname
 );
 
 const overallSentiment = toneResult => (
-  toneResult.concat().sort((a, b) => b.score - a.score)[0].tone_name === 'Joy' ? 'Positive' : 'Negative'
+  toneResult.concat().sort((a, b) => b.score - a.score)[0].tone_name === 'Joy' ? 'Positivo' : 'Negativo'
 );
 
 const timeFormat = 'MMM Do, h:mm a';
@@ -38,7 +38,7 @@ const ConversationWindow = ({ conversation, toneResult, deleteLogAndRefresh }) =
     <ToneHistory toneHistory={toneResult.toneHistory || []} />
     <div className={classes.deleteWrapper}>
       <RaisedButton
-        label="Delete Conversation"
+        label="Apagar Conversa"
         onClick={() => deleteLogAndRefresh(conversation.conversation)}
       />
     </div>

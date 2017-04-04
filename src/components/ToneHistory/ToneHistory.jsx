@@ -43,7 +43,7 @@ const CustomLabel = props => (
       stroke="none"
       fill={props.stroke}
     >
-      <tspan x="25" dy="0.71em">Comments</tspan>
+      <tspan x="25" dy="0.71em">Comentários</tspan>
     </text>
   </g>
 );
@@ -51,7 +51,7 @@ const CustomLabel = props => (
 
 const ToneHistory = ({ toneHistory }) => (
   <Card className={classes.container}>
-    <CardHeader title="SENTIMENT HISTORY" />
+    <CardHeader title="HISTÓRICO DE SENTIMENTOS" />
     <div className={classes.content}>
       {toneHistory.length ?
         <ResponsiveContainer>

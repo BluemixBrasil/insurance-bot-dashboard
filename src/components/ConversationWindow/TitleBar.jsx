@@ -11,7 +11,7 @@ const TitleBar = ({ name, email, sentiment }) => (
       <p>{email}</p>
     </div>
     <div className={classes.sentiment}>
-      <p>CURRENT SENTIMENT</p>
+      <p>SENTIMENTO ATUAL</p>
       <p className={classes.value}>{sentiment}</p>
     </div>
   </div>

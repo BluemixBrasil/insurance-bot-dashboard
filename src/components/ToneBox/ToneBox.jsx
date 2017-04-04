@@ -21,7 +21,7 @@ const styles = {
 
 const ToneBox = ({ toneResult }) => (
   <Card containerStyle={styles.container} className={classes.container}>
-    <CardHeader style={styles.header} title="ALL SENTIMENTS" />
+    <CardHeader style={styles.header} title="SENTIMENTOS" />
     {toneResult.length ?
       <div className={classes.graphsContainer}>
         {toneResult.map((emotion, i) =>

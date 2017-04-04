@@ -38,7 +38,7 @@ const formatDate = (date) => (
 
 const ChatList = ({ conversations, selected, selectConversation }) => (
   <List className={classes.list}>
-    <Subheader style={styles.header} inset={false}>ALL CHATS ({conversations.length})</Subheader>
+    <Subheader style={styles.header} inset={false}>TODAS AS CONVERSAS ({conversations.length})</Subheader>
     <div className={classes.itemsWrapper}>
       {conversations.map((conversation, i) =>
         <ListItem
