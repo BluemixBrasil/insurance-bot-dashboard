@@ -97,7 +97,7 @@ if (!util.isUndefined(watsonServices)) {
 // /////// GET WATSON LANGUAGE TRANSLATOR CREDENTIALS///////////
 let languageTranslator;
 
-const watsonServicesLT = services.languageTranslator;
+const watsonServicesLT = services.language_translator;
 
 if (!util.isUndefined(watsonServicesLT)) {
   // We now take the first bound service and extract it's credentials object
