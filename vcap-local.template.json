@@ -32,6 +32,17 @@
                 "ibm_dedicated_public"
             ]
         }
+    ],
+    "language_translator": [
+      {
+        "label": "language_translator",
+        "name": "insurance-bot-language-translator",
+        "credentials": {
+            "url": "https://gateway.watsonplatform.net/language-translator/api",
+            "password": "",
+            "username": ""
+        }
+      }
     ]
   }
 }
