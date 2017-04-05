@@ -2,6 +2,7 @@
 applications:
 - name: insurance-bot-dashboard
   host: insurance-bot-dashboard
+  domain: demo.ibmbluemix.com.br
   memory: 256M
   services:
   - insurance-bot-db
