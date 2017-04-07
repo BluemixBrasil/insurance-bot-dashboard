@@ -140,15 +140,15 @@ import SomeComponent from 'components/SomeComponent'
 
 Essas são as variáveis globais disponíveis para uso em qualquer parte do seu código. Caso deseje modificá-las, elas podem ser encontradas com a chave `globals` no arquivo `~/config/index.js`. Ao adicionar novas variáveis globais, certifique-se de adicioná-las a `~/.eslintrc` também.
 
-|Variable|Description|
+|Variável|Descrição|
 |---|---|
-|`process.env.NODE_ENV`|the active `NODE_ENV` when the build started|
-|`__DEV__`|True when `process.env.NODE_ENV` is `development`|
-|`__PROD__`|True when `process.env.NODE_ENV` is `production`|
-|`__TEST__`|True when `process.env.NODE_ENV` is `test`|
-|`__DEBUG__`|True when `process.env.NODE_ENV` is `development` and cli arg `--no_debug` is not set (`npm run dev:no-debug`)|
+|`process.env.NODE_ENV`|o ativo `NODE_ENV` quando a compilação inicia|
+|`__DEV__`|True quando `process.env.NODE_ENV` é `desenvolvimento`|
+|`__PROD__`|True quando `process.env.NODE_ENV` é `produção`|
+|`__TEST__`|True quando `process.env.NODE_ENV` é `teste`|
+|`__DEBUG__`|True quando `process.env.NODE_ENV` é `desenvolvimento` e cli arg `--no_debug` não está definido (`npm run dev:no-debug`)|
 |`__BASENAME__`|[history basename option](https://github.com/rackt/history/blob/master/docs/BasenameSupport.md)|
-|`__SOCKET_URL__`|The websocket endpoint for the main website. It is initialized from `process.env.SOCKET_URL` variable specified as *https://host:port*.|
+|`__SOCKET_URL__`|O endpoint do websocket para a páginal inicial. É iniciado pela variável `process.env.SOCKET_URL` especificada como *https://host:port*.|
 
 ## Licença
 
