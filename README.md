@@ -1,4 +1,4 @@
-# Cloud Insurance Co. - Admin Dashboard
+# Cloud Insurance Co. - Painel do Administrador
 
 <!-- No tests are set up currently
 | **master** | [![Build Status](https://travis-ci.org/IBM-Bluemix/insurance-bot-dashboard.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/insurance-bot-dashboard) |
@@ -6,125 +6,126 @@
 | **dev** | [![Build Status](https://travis-ci.org/IBM-Bluemix/insurance-bot-dashboard.svg?branch=dev)](https://travis-ci.org/IBM-Bluemix/insurance-bot-dashboard) |
  -->
 
-This repository is part of the larger [Cloud Insurance Co.](https://github.com/IBM-Bluemix/cloudco-insurance) project.
+Esse repositório é parte do projeto maior [Cloud Insurance Co.](https://github.com/IBM-Bluemix/cloudco-insurance).
 
-# Overview
+# Visão Geral
 
-The admin dashboard provides [Cloud Insurance Co.](https://github.com/IBM-Bluemix/cloudco-insurance) administrators with an overview of the ongoing activities on the site. It starts with real-time view on the chat bot conversations providing admins with insights about the interactions between the chat bot and the visitors.
+O painel de administrador provê aos administradores do [Cloud Insurance Co.](https://github.com/IBM-Bluemix/cloudco-insurance) uma visão geral das atividades em progresso no website. Começando por uma view em tempo real das conversas com o chatbot provendo aos admins visões sobre as interações entre o bot e os visitantes.
 
-This project is designed with a bunch of awesome new front-end technologies, all on top of a configurable, feature-rich webpack build system that's already setup to provide hot reloading, CSS modules with Sass support, unit testing, code coverage reports, bundle splitting, and a whole lot more, while providing amazing developer tools such as Redux CLI (a generator), Redux devtools (Chrome extension), and Storybook for visually developing and testing components.
+Esse projeto foi criado como diversas novas tecnologias front-end incríveis, tudo em cima de um sistema de compilação webpack rico em recusos o qual já foi configurado para prover resultados rápidos às alterações no código, módulos CSS com suporte a Sass, teste de unidade, relatórios de cobertura de código, separação de pacote e muito mais, enquanto provê ferramentas incríveis de desenvolvedor como Redux CLI (um gerador), Redux devtools (extenção do Chrome), e um Storybook para desenvolver de forma visual visual e testar os componentes.
 
-In order to deploy the full set of microservices involved, check out the [insurance-toolchain repo][toolchain_url]. Otherwise, you can deploy just the app by following the steps here.
+Para enviar todo o conjunto de microsserviços envolvidos confira o [repositório da toolchain do seguro][toolchain_url].
+Ou se preferir, pode enviar apenas a aplicação seguindo os passos abaixo
 
-## Requirements
+## Requisitos da aplicação
 * node `^6.7.0`
 * npm `^3.10.10`
 
-## Running the app on Bluemix
+## Rodando a aplicação no Bluemix
 
-1. If you do not already have a Bluemix account, [sign up here][bluemix_reg_url]
+1. Caso não tenha uma conta no Bluemix [inscreva-se][bluemix_reg_url]
 
-1. Download and install the [Cloud Foundry CLI][cloud_foundry_url] tool
+1. Baixe e Instale a ferramenta [Cloud Foundry CLI][cloud_foundry_url].
 
-1. The app depends on the [main website app](https://github.com/IBM-Bluemix/insurance-bot). Make sure to deploy it first.
+1. O app depende dos microsserviços de [Catálogo](https://github.com/IBM-Bluemix/insurance-catalog) e [Demandas](https://github.com/IBM-Bluemix/insurance-orders). Certifique-se de enviá-los ao Bluemix primeiro.
 
-1. Clone the app to your local environment from your terminal using the following command:
+1. Clone a aplicação para seu ambiente de trabalho pelo terminal de comandos usando o seguinte comando:
 
   ```
-  git clone https://github.com/IBM-Bluemix/insurance-bot-dashboard.git
+  git clone https://github.com/IBM-Bluemix/insurance-bot.git
   ```
 
-1. `cd` into this newly created directory
+1. `cd` seu-diretório
 
-1. Open the `manifest.yml` file and change the `host` value to something unique.
+1. Abra o arquivo `manifest.yml` e mude o valor `host` para um nome único.
 
-  The host you choose will determinate the subdomain of your application's URL:  `<host>.mybluemix.net`
+  Seu host criado definirá o subdomínio da URL de sua aplicação:  `<host>.mybluemix.net`
 
-1. Connect to Bluemix in the command line tool and follow the prompts to log in
+1. Conecte a aplicação no terminal de comandos e siga os comandos a seguir para logar:
 
   ```
   cf login -a https://api.ng.bluemix.net
   ```
 
-1. Create a Watson Tone Analyzer service.
+1.Crie um serviço de Tone Analyzer do Watson.
 
   ```
   cf create-service tone_analyzer standard insurance-tone_analyzer
   ```
 
-1. Build the app web site
+1. Construa a página do app
 
   ```
   npm install
   npm run deploy:prod
   ```
 
-1. Push the app to Bluemix
+1. Publique o app no Bluemix
 
   ```
   cf push --no-start
   ```
 
-1. Define a variable pointing to the main site deployment.
+1. Defina uma variável apontando para o envio da página inicial.
 
   ```
   cf set-env insurance-bot-dashboard SOCKET_URL https://your-insurance-bot.mybluemix.net
   ```
 
-1. Start your app
+1. Execute seu app.
 
   ```
   cf start insurance-bot-dashboard
   ```
 
-And voila! You now have your very own instance of the app running on Bluemix.
+  E voila! Você tem sua própria versão do app rodando no Bluemix.
 
-## Running the app locally
+## Executando o app em host local
 
-1. If you do not already have a Bluemix account, [sign up here][bluemix_reg_url]
+1. Caso não tenha uma conta no Bluemix [inscreva-se][bluemix_reg_url]
 
-1. Download and install the [Cloud Foundry CLI][cloud_foundry_url] tool
+1. Baixe e Instale a ferramenta [Cloud Foundry CLI][cloud_foundry_url].
 
-1. The app depends on the [main website app](https://github.com/IBM-Bluemix/insurance-bot). Make sure to deploy it first.
+1. O app dependo do [aplicativo da página inicial](https://github.com/IBM-Bluemix/insurance-bot). Certifique-se de enviá-los ao Bluemix primeiro.
 
-1. Clone the app to your local environment from your terminal using the following command:
+1. Clone a aplicação para seu ambiente de trabalho pelo terminal de comandos usando o seguinte comando:
 
   ```
-  git clone https://github.com/IBM-Bluemix/insurance-bot-dashboard.git
+  git clone https://github.com/IBM-Bluemix/insurance-bot.git
   ```
 
-1. `cd` into this newly created directory
+1. `cd` insira-seu-diretório
 
-1. Create a new Watson Tone Analyzer service named `insurance-tone_analyzer` using your Bluemix account
+1. Crie um novo serviço do Watson Tone Analyzer chamado `insurance-tone_analyzer` usando sua conta Bluemix
 
-1. Replace the corresponding credentials for the `insurance-tone_analyzer` and `insurance-bot-db` services in your `vcap-local.json` file - using `vcap-local.template.json` as template file.
+1. Substitua as credenciais correspondentes pelos serviços `insurance-tone_analyzer` e `insurance-bot-db` em seu arquivo `vcap-local.json` usando `vcap-local.template.json` como template.
 
-1. Define an environment variable pointing to the main site (which can be running locally or in Bluemix)
+1. Defina uma variável de ambiente apontando para a página inicial (que pode ser executada em local host ou no Bluemix)
 
   ```
   export SOCKET_URL=https://localhost:6040
   ```
 
-1. Install the required npm packages using the following command
+1. Instale os pacotes npm com o comando a seguir
 
   ```
   npm install
   ```
 
-1. Start your app locally with the following command
+1. Execute seu app em local com o comando a seguir
 
   ```
   npm start
   ```
 
-This command will start your Node.js web server and print the address where it is listening to requests in the console: `server starting on http://localhost:3000`.
+Esse comando dará início a seu servidor node.js e irá retornar o endereço do port no console: `server starting on http://localhost:3000`.
 
 <img src="http://i.imgur.com/zR7VRG6.png?2" />
 
-## Development
+## Desenvolvimento
 
-### Root Resolve
-Webpack is configured to make use of [resolve.root](http://webpack.github.io/docs/configuration.html#resolve-root), which lets you import local packages as if you were traversing from the root of your `~/src` directory. Here's an example:
+### Resolução da raíz
+O Webpack está configurado para o uso do [resolve.root](http://webpack.github.io/docs/configuration.html#resolve-root), que permite a importação de pacotes locais como se você estivesse atravessando da raíz de seu diretório `~/src` como no exemplo a seguir:
 
 ```js
 // current file: ~/src/views/some/nested/View.js
@@ -135,9 +136,9 @@ import SomeComponent from '../../../components/SomeComponent'
 import SomeComponent from 'components/SomeComponent'
 ```
 
-### Globals
+### Variáveis Globais
 
-These are global variables available to you anywhere in your source code. If you wish to modify them, they can be found as the `globals` key in `~/config/index.js`. When adding new globals, make sure you also add them to `~/.eslintrc`.
+Essas são as variáveis globais disponíveis para uso em qualquer parte do seu código. Caso deseje modificá-las, elas podem ser encontradas com a chave `globals` no arquivo `~/config/index.js`. Ao adicionar novas variáveis globais, certifique-se de adicioná-las a `~/.eslintrc` também.
 
 |Variable|Description|
 |---|---|
@@ -149,28 +150,28 @@ These are global variables available to you anywhere in your source code. If you
 |`__BASENAME__`|[history basename option](https://github.com/rackt/history/blob/master/docs/BasenameSupport.md)|
 |`__SOCKET_URL__`|The websocket endpoint for the main website. It is initialized from `process.env.SOCKET_URL` variable specified as *https://host:port*.|
 
-## License
+## Licença
 
-See [License.txt](License.txt) for license information.
+Veja o [arquivo de licença](License.txt) para informação sobre a licença.
 
-# Privacy Notice
+# Notificação de privacidade
 
-This application is configured to track deployments to [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service on each deployment:
+Essa aplicação é configurada para rastrear seus envios para o [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) e outras plataformas cloud foundry. A informação a seguir é enviada para um [Rastreador de envio](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) a cada envio:
 
-* Node.js package version
-* Node.js repository URL
-* Application Name (`application_name`)
-* Space ID (`space_id`)
-* Application Version (`application_version`)
-* Application URIs (`application_uris`)
-* Labels of bound services
-* Number of instances for each bound service and associated plan information
+* Versão do pacote Node.js
+* URL do repositório Node.js
+* Nome do app (`application_name`)
+* ID do espaço (`space_id`)
+* Versão do app (`application_version`)
+* URIs do app (`application_uris`)
+* Rótulos de serviços associados
+* Número de instância para cada serviço associado e informações do plano associadas
 
-This data is collected from the `package.json` file in the application and the `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
+Os dados coletados do arquivo `package.json` na aplicação e as variáveis do ambiente `VCAP_APPLICATION` e `VCAP_SERVICES` no Bluemix e outras plataformas Cloud Foundry. Esses dados são utilizados pela IBM para traçar medidos ao redor dos envios de aplicações modelo para o Bluemix para medir a utilidade dos exemplos, para que possamos sempre melhor o conteúdo que lhe oferecemos. Somente envios de aplicações modelo incluem código que importa o rastreador de envio serão rastreados.
 
-## Disabling Deployment Tracking
+## Desabilitando o rastreador de envio
 
-Deployment tracking can be disabled by removing `require('cf-deployment-tracker-client').track();` from the beginning of the `tracker.js` file.
+O rastreador de envio pode ser removido deletando a linha `require("cf-deployment-tracker-client").track();` do início do arquivo `tracker.js`.
 
 [bluemix_reg_url]: http://ibm.biz/insurance-store-registration
 [cloud_foundry_url]: https://github.com/cloudfoundry/cli
