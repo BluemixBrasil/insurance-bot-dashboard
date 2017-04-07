@@ -27,12 +27,12 @@ Ou se preferir, pode enviar apenas a aplicação seguindo os passos abaixo
 
 1. Baixe e Instale a ferramenta [Cloud Foundry CLI][cloud_foundry_url].
 
-1. O app depende dos microsserviços de [Catálogo](https://github.com/IBM-Bluemix/insurance-catalog) e [Demandas](https://github.com/IBM-Bluemix/insurance-orders). Certifique-se de enviá-los ao Bluemix primeiro.
+1. O app depende dos microsserviços de [Catálogo](https://github.com/carlosbu/insurance-catalog) e [Demandas](https://github.com/carlosbu/insurance-orders). Certifique-se de enviá-los ao Bluemix primeiro.
 
 1. Clone a aplicação para seu ambiente de trabalho pelo terminal de comandos usando o seguinte comando:
 
   ```
-  git clone https://github.com/IBM-Bluemix/insurance-bot.git
+  git clone https://github.com/carlosbu/insurance-bot.git
   ```
 
 1. `cd` seu-diretório
@@ -86,12 +86,12 @@ Ou se preferir, pode enviar apenas a aplicação seguindo os passos abaixo
 
 1. Baixe e Instale a ferramenta [Cloud Foundry CLI][cloud_foundry_url].
 
-1. O app dependo do [aplicativo da página inicial](https://github.com/IBM-Bluemix/insurance-bot). Certifique-se de enviá-los ao Bluemix primeiro.
+1. O app dependo do [aplicativo da página inicial](https://github.com/carlosbu/insurance-bot). Certifique-se de enviá-los ao Bluemix primeiro.
 
 1. Clone a aplicação para seu ambiente de trabalho pelo terminal de comandos usando o seguinte comando:
 
   ```
-  git clone https://github.com/IBM-Bluemix/insurance-bot.git
+  git clone https://github.com/carlosbu/insurance-bot.git
   ```
 
 1. `cd` insira-seu-diretório
